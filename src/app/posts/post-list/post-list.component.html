@@ -1,0 +1,56 @@
+
+<div class="row no-gutters">
+<div class="container" >
+  <div class="row card-group" >
+    <div class="row card-group" >
+      <div id="general" class="col-4" *ngFor="let post of posts">
+        <div class="card" style="width: 16rem;">
+          <div class="card-body">
+            <div id="titulos" ><img  id="imagen" [src]="post.imageUrl" class="card-img-top" alt="..."></div>
+          <h3 class="card-title" style="text-align: center">
+          <b >{{ post.nombre }}</b>
+          </h3>
+          <p class="card-text">Precio: {{ post.precio }}</p>
+          <p class="card-text">Medida de venta: {{ post.medida }}</p>
+          <p class="card-text">Descripción: {{ post.descripcion }}</p>
+          <p class="card-text">Disponibilidad: {{ post.disponibilidad }}</p>
+          <mat-action-row *ngIf="isAuth && post.author != userId">
+          <a class="btn btn-primary" (click)="addPost(post)">Comprar</a>
+          </mat-action-row>
+          <mat-action-row *ngIf="isAuth && post.author === userId">
+            <button
+              mat-button
+              style="background-color:rgb(19, 57, 228)"
+              [routerLink]="['/edit', post.id]"
+            >
+              Editar
+            </button>
+            <button mat-button style="background-color:rgba(255, 0, 0, 0.63)" (click)="onDelete(post.id)">
+              Eliminar
+            </button>
+          </mat-action-row>
+          </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+<div class="btn-toolbar mt-5" style="margin-bottom: 1rem;"role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-primary">1</button>
+    <button type="button" class="btn btn-primary">2</button>
+    <button type="button" class="btn btn-primary">3</button>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
